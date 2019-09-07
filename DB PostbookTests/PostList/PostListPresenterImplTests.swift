@@ -37,6 +37,21 @@ class PostListPresenterImplTests: XCTestCase {
         XCTAssert(sut.tableView(UITableView(), numberOfRowsInSection: 0) == 2)
     }
 
+    func testTableViewDataSourceReturnsPostTableViewCell() {
+        sut.view = postListViewController
+        sut.viewDidLoad()
+
+        let tableView = UITableView()
+        tableView.register(PostTableViewCell.self, forCellReuseIdentifier: "reuseIdentifer")
+
+        let cell = sut.tableView(tableView, cellForRowAt: IndexPath(row: 0, section: 0))
+
+        XCTAssertNotNil(cell as? PostTableViewCell)
+        XCTAssertEqual((cell.subviews[1] as? UIButton)?.title(for: .normal), "FAV")
+        XCTAssertEqual((cell.subviews[2] as? UILabel)?.text, "some-title-1")
+        XCTAssertEqual((cell.subviews[3] as? UILabel)?.text, "some-body-1")
+    }
+
     class PostFetcherMock: PostFetcher {
         var fetchCalled = false
 

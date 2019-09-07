@@ -25,9 +25,8 @@ class PostListPresenterImpl: NSObject, PostListPresenter, UITableViewDataSource 
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: "reuseIdentifier")
-        cell.textLabel?.text = posts[indexPath.row].title
-        cell.detailTextLabel?.text = posts[indexPath.row].body
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifer", for: indexPath) as! PostTableViewCell
+        cell.setPost(posts[indexPath.row])
         return cell
     }
 }

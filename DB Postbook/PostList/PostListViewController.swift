@@ -54,6 +54,7 @@ class PostListViewController: UIViewController {
             make.top.equalTo(segmentedControl.snp.bottom).offset(20)
         }
 
+        tableView.register(PostTableViewCell.self, forCellReuseIdentifier: "reuseIdentifer")
         tableView.dataSource = presenter as? UITableViewDataSource
     }
 }
