@@ -36,11 +36,23 @@ class PostListViewControllerTests: XCTestCase {
         XCTAssert(segmentedControl?.selectedSegmentIndex == 0)
     }
 
+    func testContainsTableView() {
+        let tableView = firstSubviewOfClass(UITableView.self, in: sut.view) as? UITableView
+
+        XCTAssertNotNil(tableView)
+    }
+
+    func testSetsTableViewsDataSource() {
+        let tableView = firstSubviewOfClass(UITableView.self, in: sut.view) as? UITableView
+
+        XCTAssertNotNil(tableView?.dataSource)
+    }
+
     private func firstSubviewOfClass<T>(_ classType: T.Type, in superview: UIView) -> UIView? {
         return superview.subviews.first { classType == type(of: $0) }
     }
 
-    class PostListPresenterMock: PostListPresenter {
+    class PostListPresenterMock: NSObject, PostListPresenter, UITableViewDataSource {
         var _view: PostListViewController?
         var view: PostListViewController? {
             get {
@@ -55,6 +67,14 @@ class PostListViewControllerTests: XCTestCase {
 
         func viewDidLoad() {
             viewDidLoadCalled = true
+        }
+
+        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            return 0
+        }
+
+        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+            return UITableViewCell(style: .default, reuseIdentifier: nil)
         }
     }
 }

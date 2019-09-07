@@ -5,6 +5,7 @@ class PostListViewController: UIViewController {
     private var presenter: PostListPresenter
 
     private let segmentedControl = UISegmentedControl(items: ["Alle Posts", "Favoriten"])
+    private let tableView = UITableView()
 
     init(presenter: PostListPresenter = PostListPresenterImpl()) {
         self.presenter = presenter
@@ -23,8 +24,13 @@ class PostListViewController: UIViewController {
         view.backgroundColor = .white
 
         configureSegmentedControl()
+        configureTableView()
 
         presenter.viewDidLoad()
+    }
+
+    func reloadTableView() {
+        tableView.reloadData()
     }
 
     private func configureSegmentedControl() {
@@ -39,5 +45,15 @@ class PostListViewController: UIViewController {
         }
 
         segmentedControl.selectedSegmentIndex = 0
+    }
+
+    private func configureTableView() {
+        view.addSubview(tableView)
+        tableView.snp.makeConstraints { make in
+            make.leading.bottom.trailing.equalToSuperview()
+            make.top.equalTo(segmentedControl.snp.bottom).offset(20)
+        }
+
+        tableView.dataSource = presenter as? UITableViewDataSource
     }
 }
