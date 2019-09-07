@@ -29,6 +29,17 @@ class PostListViewControllerTests: XCTestCase {
         XCTAssertTrue(presenter.viewDidLoadCalled)
     }
 
+    func testContainsSegmentedControl() {
+        let segmentedControl = firstSubviewOfClass(UISegmentedControl.self, in: sut.view) as? UISegmentedControl
+
+        XCTAssertNotNil(segmentedControl)
+        XCTAssert(segmentedControl?.selectedSegmentIndex == 0)
+    }
+
+    private func firstSubviewOfClass<T>(_ classType: T.Type, in superview: UIView) -> UIView? {
+        return superview.subviews.first { classType == type(of: $0) }
+    }
+
     class PostListPresenterMock: PostListPresenter {
         var _view: PostListViewController?
         var view: PostListViewController? {

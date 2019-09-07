@@ -4,6 +4,8 @@ class PostListViewController: UIViewController {
 
     private var presenter: PostListPresenter
 
+    private let segmentedControl = UISegmentedControl(items: ["Alle Posts", "Favoriten"])
+
     init(presenter: PostListPresenter = PostListPresenterImpl()) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
@@ -19,7 +21,23 @@ class PostListViewController: UIViewController {
 
     override func viewDidLoad() {
         view.backgroundColor = .white
-        
+
+        configureSegmentedControl()
+
         presenter.viewDidLoad()
+    }
+
+    private func configureSegmentedControl() {
+        view.addSubview(segmentedControl)
+        segmentedControl.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            if #available(iOS 11, *) {
+                make.top.equalTo(view.safeAreaLayoutGuide.snp.topMargin).offset(20)
+            } else {
+                make.top.equalToSuperview()
+            }
+        }
+
+        segmentedControl.selectedSegmentIndex = 0
     }
 }
