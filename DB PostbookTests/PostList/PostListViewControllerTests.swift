@@ -56,6 +56,16 @@ class PostListViewControllerTests: XCTestCase {
         XCTAssert(presenter.segmentedControlIndex == 1)
     }
 
+    func testSegmentedControlActionScrollsToTop() {
+        let segmentedControl = firstSubviewOfClass(UISegmentedControl.self, in: sut.view) as? UISegmentedControl
+        let tableView = firstSubviewOfClass(UITableView.self, in: sut.view) as? UITableView
+        tableView?.contentOffset.y = 100
+
+        segmentedControl?.sendActions(for: .valueChanged)
+
+        XCTAssert(tableView?.contentOffset.y == 0)
+    }
+
     private func firstSubviewOfClass<T>(_ classType: T.Type, in superview: UIView) -> UIView? {
         return superview.subviews.first { classType == type(of: $0) }
     }

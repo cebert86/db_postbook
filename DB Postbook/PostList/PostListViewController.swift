@@ -61,6 +61,7 @@ class PostListViewController: UIViewController {
 
     @objc
     private func segmentedControlTapped() {
+        tableView.contentOffset = CGPoint(x: 0, y: 0)
         presenter.segmentedControlTapped(index: segmentedControl.selectedSegmentIndex)
     }
 }
