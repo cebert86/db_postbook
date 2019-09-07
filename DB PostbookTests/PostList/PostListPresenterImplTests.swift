@@ -63,6 +63,42 @@ class PostListPresenterImplTests: XCTestCase {
         XCTAssertEqual(userManager.favouritePostToAdd, post)
     }
 
+    func testSegmentedControlTappedWithFavouriteIndexReloadsTableView() {
+        sut.view = postListViewController
+
+        sut.segmentedControlTapped(index: 1)
+
+        XCTAssertTrue(postListViewController.reloadTableViewCalled)
+    }
+
+    func testSegmentedControlSwitchToFavouritePostsHasCorrectItems() {
+        sut.view = postListViewController
+
+        sut.viewDidLoad()
+        XCTAssert(sut.tableView(UITableView(), numberOfRowsInSection: 0) == 2)
+
+        sut.segmentedControlTapped(index: 1)
+        XCTAssert(sut.tableView(UITableView(), numberOfRowsInSection: 0) == 1)
+    }
+
+    func testSegmentedControlSwitchToAllPostsFetchesPosts() {
+        sut.view = postListViewController
+
+        sut.segmentedControlTapped(index: 0)
+
+        XCTAssertTrue(postFetcher.fetchCalled)
+    }
+
+    func testSegmentedControlSwitchToAllPostsHasCorrectItems() {
+        sut.view = postListViewController
+
+        sut.segmentedControlTapped(index: 1)
+        XCTAssert(sut.tableView(UITableView(), numberOfRowsInSection: 0) == 1)
+
+        sut.segmentedControlTapped(index: 0)
+        XCTAssert(sut.tableView(UITableView(), numberOfRowsInSection: 0) == 2)
+    }
+
     class PostFetcherMock: PostFetcher {
         var fetchCalled = false
 
@@ -95,7 +131,7 @@ class PostListPresenterImplTests: XCTestCase {
 
         var favouritePosts: [Post] {
             get {
-                return []
+                return [Post(userId: 1, id: 1, title: "fav-post-title", body: "fav-post-body")]
             }
             set {
 

@@ -48,11 +48,21 @@ class PostListViewControllerTests: XCTestCase {
         XCTAssertNotNil(tableView?.dataSource)
     }
 
+    func testSegmentedControlDelegatesToPresenter() {
+        let segmentedControl = firstSubviewOfClass(UISegmentedControl.self, in: sut.view) as? UISegmentedControl
+
+        segmentedControl?.sendActions(for: .valueChanged)
+
+        XCTAssert(presenter.segmentedControlIndex == 1)
+    }
+
     private func firstSubviewOfClass<T>(_ classType: T.Type, in superview: UIView) -> UIView? {
         return superview.subviews.first { classType == type(of: $0) }
     }
 
     class PostListPresenterMock: NSObject, PostListPresenter, UITableViewDataSource {
+        var segmentedControlIndex = 0
+
         var _view: PostListViewController?
         var view: PostListViewController? {
             get {
@@ -75,6 +85,10 @@ class PostListViewControllerTests: XCTestCase {
 
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             return UITableViewCell(style: .default, reuseIdentifier: nil)
+        }
+
+        func segmentedControlTapped(index: Int) {
+            segmentedControlIndex = 1
         }
     }
 }

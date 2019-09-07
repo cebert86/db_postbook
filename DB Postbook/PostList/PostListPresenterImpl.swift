@@ -15,12 +15,7 @@ class PostListPresenterImpl: NSObject, PostListPresenter, UITableViewDataSource,
     }
 
     func viewDidLoad() {
-        postFetcher.fetch(onSuccess: { posts in
-            self.posts = posts
-            self.view?.reloadTableView()
-        }, onError: { error in
-            //TODO: Present error
-        })
+        fetchPosts()
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -36,5 +31,23 @@ class PostListPresenterImpl: NSObject, PostListPresenter, UITableViewDataSource,
 
     func addFavouritePost(_ post: Post) {
         userManager.addFavouritePost(post)
+    }
+
+    func segmentedControlTapped(index: Int) {
+        if index == 1 {
+            posts = userManager.favouritePosts
+            self.view?.reloadTableView()
+        } else {
+            fetchPosts()
+        }
+    }
+
+    private func fetchPosts() {
+        postFetcher.fetch(onSuccess: { posts in
+            self.posts = posts
+            self.view?.reloadTableView()
+        }, onError: { error in
+            //TODO: Present error
+        })
     }
 }

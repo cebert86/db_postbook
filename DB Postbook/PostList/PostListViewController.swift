@@ -45,6 +45,7 @@ class PostListViewController: UIViewController {
         }
 
         segmentedControl.selectedSegmentIndex = 0
+        segmentedControl.addTarget(self, action: #selector(segmentedControlTapped), for: .valueChanged)
     }
 
     private func configureTableView() {
@@ -56,5 +57,10 @@ class PostListViewController: UIViewController {
 
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: "reuseIdentifer")
         tableView.dataSource = presenter as? UITableViewDataSource
+    }
+
+    @objc
+    private func segmentedControlTapped() {
+        presenter.segmentedControlTapped(index: segmentedControl.selectedSegmentIndex)
     }
 }
