@@ -4,21 +4,37 @@ import XCTest
 class LoginPresenterImplTests: XCTestCase {
 
     var wireframe: PostListWireframeMock!
+    var userManager: UserManager!
     var viewController: LoginViewController!
 
     var sut: LoginPresenterImpl!
 
     override func setUp() {
         wireframe = PostListWireframeMock()
+        userManager = UserManagerImpl(userDefaults: UserDefaults(suiteName: "TestUserDefaults")!)
         viewController = LoginViewController()
 
-        sut = LoginPresenterImpl(postListWireframe: wireframe)
+        sut = LoginPresenterImpl(postListWireframe: wireframe, userManager: userManager)
+
+        userManager.currentUserId = 0
+        userManager.favouritePosts = []
+    }
+
+    override func tearDown() {
+        userManager.currentUserId = 0
+        userManager.favouritePosts = []
     }
 
     func testLoginButtonTappedDoesNotShowPostListIfNoViewIsAvailable() {
         sut.loginButtonTapped(userId: 1)
 
-        XCTAssert(wireframe.userId == 0)
+        XCTAssertFalse(wireframe.showPostListCalled)
+    }
+
+    func testLoginButtonDoesNotSaveCurrentUserIdIfNoViewIsAvailable() {
+        sut.loginButtonTapped(userId: 1)
+
+        XCTAssert(userManager.currentUserId == 0)
     }
 
     func testLoginButtonTappedShowsPostListIfViewIsAvailable() {
@@ -26,14 +42,22 @@ class LoginPresenterImplTests: XCTestCase {
 
         sut.loginButtonTapped(userId: 1)
 
-        XCTAssert(wireframe.userId == 1)
+        XCTAssertTrue(wireframe.showPostListCalled)
+    }
+
+    func testLoginButtonSavesCurrentUserIdIfViewIsAvailable() {
+        sut.view = viewController
+
+        sut.loginButtonTapped(userId: 1)
+
+        XCTAssert(userManager.currentUserId == 1)
     }
 
     class PostListWireframeMock: PostListWireframe {
-        var userId = 0
+        var showPostListCalled = false
 
-        func showPostList(for userId: Int, on viewController: UIViewController) {
-            self.userId = userId
+        func showPostList(on viewController: UIViewController) {
+            showPostListCalled = true
         }
     }
 }

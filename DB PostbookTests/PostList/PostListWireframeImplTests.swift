@@ -16,13 +16,13 @@ class PostListWireframeImplTests: XCTestCase {
     }
 
     func testShowPostListWrapsPostListViewControllerInNavigationController() {
-        sut.showPostList(for: 1, on: viewController)
+        sut.showPostList(on: viewController)
 
         XCTAssertNotNil(navigationController.topViewController as? PostListViewController)
     }
 
     func testShowPostListShowsNavigationControllerOnCorrectViewController() {
-        sut.showPostList(for: 1, on: viewController)
+        sut.showPostList(on: viewController)
 
         XCTAssertEqual(viewController.showedViewController, navigationController)
     }

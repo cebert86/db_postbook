@@ -1,5 +1,5 @@
 import Foundation
 
 protocol PostFetcher {
-    func fetch(for userId: Int, onSuccess: @escaping (_ : [Post]) -> Void, onError: @escaping (_ : Error) -> Void)
+    func fetch(onSuccess: @escaping (_ : [Post]) -> Void, onError: @escaping (_ : Error) -> Void)
 }

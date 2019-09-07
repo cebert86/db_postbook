@@ -8,7 +8,7 @@ class PostListWireframeImpl: PostListWireframe {
         self.navigationController = navigationController
     }
 
-    func showPostList(for userId: Int, on viewController: UIViewController) {
+    func showPostList(on viewController: UIViewController) {
         navigationController.setViewControllers([PostListViewController()], animated: true)
         viewController.show(navigationController, sender: nil)
     }

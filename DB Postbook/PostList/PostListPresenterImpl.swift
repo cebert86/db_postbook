@@ -8,7 +8,7 @@ class PostListPresenterImpl: PostListPresenter {
     }
 
     func viewDidLoad() {
-        postFetcher.fetch(for: 1, onSuccess: { post in
+        postFetcher.fetch(onSuccess: { post in
 
         }, onError: { error in
             

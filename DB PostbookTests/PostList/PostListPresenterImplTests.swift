@@ -16,14 +16,14 @@ class PostListPresenterImplTests: XCTestCase {
     func testViewDidLoadFetchesPostsForUserId() {
         sut.viewDidLoad()
 
-        XCTAssert(postFetcher.userId == 1)
+        XCTAssertTrue(postFetcher.fetchCalled)
     }
 
     class PostFetcherMock: PostFetcher {
-        var userId = 0
+        var fetchCalled = false
 
-        func fetch(for userId: Int, onSuccess: @escaping ([Post]) -> Void, onError: @escaping (Error) -> Void) {
-            self.userId = userId
+        func fetch(onSuccess: @escaping ([Post]) -> Void, onError: @escaping (Error) -> Void) {
+            fetchCalled = true
         }
     }
 }

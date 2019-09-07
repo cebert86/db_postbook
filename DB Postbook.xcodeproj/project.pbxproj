@@ -25,6 +25,9 @@
 		B33AF03723219A3F00AF6879 /* PostListWireframeImplTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33AF03623219A3F00AF6879 /* PostListWireframeImplTests.swift */; };
 		B33AF03923219C8100AF6879 /* PostListPresenterImplTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33AF03823219C8100AF6879 /* PostListPresenterImplTests.swift */; };
 		B33AF03B23219D2100AF6879 /* PostListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33AF03A23219D2100AF6879 /* PostListViewControllerTests.swift */; };
+		B33AF04023239F0300AF6879 /* UserManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33AF03F23239F0300AF6879 /* UserManagerImpl.swift */; };
+		B33AF0432323A04600AF6879 /* UserManagerImplTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33AF0422323A04600AF6879 /* UserManagerImplTests.swift */; };
+		B33AF0452323FBCF00AF6879 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33AF0442323FBCF00AF6879 /* UserManager.swift */; };
 		C3BC63BBF389D3007C2D5C12 /* Pods_DB_PostbookTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1FBE48F741B73A7CE94FB71 /* Pods_DB_PostbookTests.framework */; };
 		FB86137F396F79585FDD11B0 /* Pods_DB_Postbook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFAFCECA6892314B80C30971 /* Pods_DB_Postbook.framework */; };
 /* End PBXBuildFile section */
@@ -66,6 +69,9 @@
 		B33AF03623219A3F00AF6879 /* PostListWireframeImplTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListWireframeImplTests.swift; sourceTree = "<group>"; };
 		B33AF03823219C8100AF6879 /* PostListPresenterImplTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListPresenterImplTests.swift; sourceTree = "<group>"; };
 		B33AF03A23219D2100AF6879 /* PostListViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListViewControllerTests.swift; sourceTree = "<group>"; };
+		B33AF03F23239F0300AF6879 /* UserManagerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManagerImpl.swift; sourceTree = "<group>"; };
+		B33AF0422323A04600AF6879 /* UserManagerImplTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManagerImplTests.swift; sourceTree = "<group>"; };
+		B33AF0442323FBCF00AF6879 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		F1FBE48F741B73A7CE94FB71 /* Pods_DB_PostbookTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DB_PostbookTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFAFCECA6892314B80C30971 /* Pods_DB_Postbook.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DB_Postbook.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -113,6 +119,7 @@
 		B312408F232176A300192CCE /* DB Postbook */ = {
 			isa = PBXGroup;
 			children = (
+				B33AF03E23239EC700AF6879 /* Persistence */,
 				B33AF0262321908800AF6879 /* PostList */,
 				B33AF0192321889800AF6879 /* Network */,
 				B33AF0162321887100AF6879 /* Login */,
@@ -126,6 +133,7 @@
 		B31240A4232176A400192CCE /* DB PostbookTests */ = {
 			isa = PBXGroup;
 			children = (
+				B33AF0412323A03700AF6879 /* Persistence */,
 				B33AF03C23219F9500AF6879 /* Network */,
 				B33AF03523219A2700AF6879 /* PostList */,
 				B33AF01E23218B4B00AF6879 /* Login */,
@@ -190,6 +198,23 @@
 			children = (
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		B33AF03E23239EC700AF6879 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				B33AF03F23239F0300AF6879 /* UserManagerImpl.swift */,
+				B33AF0442323FBCF00AF6879 /* UserManager.swift */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
+		B33AF0412323A03700AF6879 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				B33AF0422323A04600AF6879 /* UserManagerImplTests.swift */,
+			);
+			path = Persistence;
 			sourceTree = "<group>";
 		};
 		D85B9F8BBCC970E096365E63 /* Frameworks */ = {
@@ -384,7 +409,9 @@
 			files = (
 				B33AF0282321909C00AF6879 /* PostListViewController.swift in Sources */,
 				B33AF0182321888A00AF6879 /* LoginPresenterImpl.swift in Sources */,
+				B33AF0452323FBCF00AF6879 /* UserManager.swift in Sources */,
 				B33AF02123218C7300AF6879 /* PostFetcher.swift in Sources */,
+				B33AF04023239F0300AF6879 /* UserManagerImpl.swift in Sources */,
 				B3124093232176A300192CCE /* LoginViewController.swift in Sources */,
 				B33AF02C2321913300AF6879 /* PostListWireframeImpl.swift in Sources */,
 				B3124091232176A300192CCE /* AppDelegate.swift in Sources */,
@@ -401,6 +428,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B33AF0432323A04600AF6879 /* UserManagerImplTests.swift in Sources */,
 				B33AF03923219C8100AF6879 /* PostListPresenterImplTests.swift in Sources */,
 				B33AF0342321967B00AF6879 /* LoginPresenterImplTests.swift in Sources */,
 				B33AF03B23219D2100AF6879 /* PostListViewControllerTests.swift in Sources */,
