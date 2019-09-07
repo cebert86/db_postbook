@@ -30,6 +30,7 @@
 		B33AF0452323FBCF00AF6879 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33AF0442323FBCF00AF6879 /* UserManager.swift */; };
 		B33AF04923240EDD00AF6879 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33AF04823240EDD00AF6879 /* PostTableViewCell.swift */; };
 		B33AF04B232415FA00AF6879 /* PostTableViewCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33AF04A232415FA00AF6879 /* PostTableViewCellTests.swift */; };
+		B33AF04D23242C7100AF6879 /* CanAddFavouritePost.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33AF04C23242C7100AF6879 /* CanAddFavouritePost.swift */; };
 		C3BC63BBF389D3007C2D5C12 /* Pods_DB_PostbookTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1FBE48F741B73A7CE94FB71 /* Pods_DB_PostbookTests.framework */; };
 		FB86137F396F79585FDD11B0 /* Pods_DB_Postbook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFAFCECA6892314B80C30971 /* Pods_DB_Postbook.framework */; };
 /* End PBXBuildFile section */
@@ -76,6 +77,7 @@
 		B33AF0442323FBCF00AF6879 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		B33AF04823240EDD00AF6879 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		B33AF04A232415FA00AF6879 /* PostTableViewCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCellTests.swift; sourceTree = "<group>"; };
+		B33AF04C23242C7100AF6879 /* CanAddFavouritePost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanAddFavouritePost.swift; sourceTree = "<group>"; };
 		F1FBE48F741B73A7CE94FB71 /* Pods_DB_PostbookTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DB_PostbookTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFAFCECA6892314B80C30971 /* Pods_DB_Postbook.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DB_Postbook.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -184,6 +186,7 @@
 				B33AF02F2321952700AF6879 /* PostListPresenterImpl.swift */,
 				B33AF0312321955D00AF6879 /* PostListPresenter.swift */,
 				B33AF04823240EDD00AF6879 /* PostTableViewCell.swift */,
+				B33AF04C23242C7100AF6879 /* CanAddFavouritePost.swift */,
 			);
 			path = PostList;
 			sourceTree = "<group>";
@@ -413,6 +416,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B33AF04D23242C7100AF6879 /* CanAddFavouritePost.swift in Sources */,
 				B33AF0282321909C00AF6879 /* PostListViewController.swift in Sources */,
 				B33AF0182321888A00AF6879 /* LoginPresenterImpl.swift in Sources */,
 				B33AF04923240EDD00AF6879 /* PostTableViewCell.swift in Sources */,

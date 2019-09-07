@@ -18,7 +18,7 @@ class UserManagerImpl: UserManager {
 
     var favouritePosts: [Post] {
         get {
-            guard let favouritePosts = UserDefaults.standard.data(forKey: userSpecificFavouritePostsKey) else {
+            guard let favouritePosts = userDefaults.data(forKey: userSpecificFavouritePostsKey) else {
                 return []
             }
 
@@ -28,6 +28,14 @@ class UserManagerImpl: UserManager {
             let postsData = try? JSONEncoder().encode(newValue)
             userDefaults.set(postsData, forKey: userSpecificFavouritePostsKey)
         }
+    }
+
+    func addFavouritePost(_ post: Post) {
+        guard !favouritePosts.contains(post) else {
+            return
+        }
+
+        favouritePosts = favouritePosts + [post]
     }
 
     private var userSpecificFavouritePostsKey: String {

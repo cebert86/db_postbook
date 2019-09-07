@@ -5,6 +5,9 @@ class PostTableViewCell: UITableViewCell {
     private let titleLabel = UILabel()
     private let bodyLabel = UILabel()
     private let favButton = UIButton()
+    private var post: Post?
+
+    var canAddFavouritePost: CanAddFavouritePost?
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -19,6 +22,8 @@ class PostTableViewCell: UITableViewCell {
     }
 
     func setPost(_ post: Post) {
+        self.post = post
+
         titleLabel.text = post.title
         bodyLabel.text = post.body
     }
@@ -50,6 +55,7 @@ class PostTableViewCell: UITableViewCell {
     private func configureFavButton() {
         favButton.setTitle("FAV", for: .normal)
         favButton.setTitleColor(.blue, for: .normal)
+        favButton.addTarget(self, action: #selector(favouriteButtonTapped), for: .touchUpInside)
 
         addSubview(favButton)
         favButton.snp.makeConstraints { make in
@@ -57,5 +63,14 @@ class PostTableViewCell: UITableViewCell {
             make.trailing.equalToSuperview().offset(-20)
             make.width.equalTo(60)
         }
+    }
+
+    @objc
+    private func favouriteButtonTapped() {
+        guard let post = self.post else {
+            return
+        }
+        
+        canAddFavouritePost?.addFavouritePost(post)
     }
 }

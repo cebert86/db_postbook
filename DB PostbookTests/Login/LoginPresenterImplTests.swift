@@ -3,6 +3,7 @@ import XCTest
 
 class LoginPresenterImplTests: XCTestCase {
 
+    var userDefaults: UserDefaults!
     var wireframe: PostListWireframeMock!
     var userManager: UserManager!
     var viewController: LoginViewController!
@@ -10,19 +11,15 @@ class LoginPresenterImplTests: XCTestCase {
     var sut: LoginPresenterImpl!
 
     override func setUp() {
+        userDefaults = UserDefaults(suiteName: "TestUserDefaults")
         wireframe = PostListWireframeMock()
-        userManager = UserManagerImpl(userDefaults: UserDefaults(suiteName: "TestUserDefaults")!)
+        userManager = UserManagerImpl(userDefaults: userDefaults)
         viewController = LoginViewController()
 
         sut = LoginPresenterImpl(postListWireframe: wireframe, userManager: userManager)
 
-        userManager.currentUserId = 0
-        userManager.favouritePosts = []
-    }
-
-    override func tearDown() {
-        userManager.currentUserId = 0
-        userManager.favouritePosts = []
+        userDefaults.removePersistentDomain(forName: "TestUserDefaults")
+        userDefaults.synchronize()
     }
 
     func testLoginButtonTappedDoesNotShowPostListIfNoViewIsAvailable() {

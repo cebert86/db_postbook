@@ -3,18 +3,16 @@ import XCTest
 
 class UserManagerImplTests: XCTestCase {
 
+    var userDefaults: UserDefaults!
+
     var sut: UserManager!
 
     override func setUp() {
-        sut = UserManagerImpl(userDefaults: UserDefaults(suiteName: "TestUserDefaults")!)
+        userDefaults = UserDefaults(suiteName: "TestUserDefaults")
+        sut = UserManagerImpl(userDefaults: userDefaults)
 
-        sut.currentUserId = 0
-        sut.favouritePosts = []
-    }
-
-    override func tearDown() {
-        sut.currentUserId = 0
-        sut.favouritePosts = []
+        userDefaults.removePersistentDomain(forName: "TestUserDefaults")
+        userDefaults.synchronize()
     }
 
     func testSaveCurrentUserId() {
@@ -44,6 +42,27 @@ class UserManagerImplTests: XCTestCase {
 
         XCTAssert(sut.favouritePosts.count == 1)
         XCTAssertEqual(sut.favouritePosts[0], post3)
+    }
+
+    func testAddFavouritePost() {
+        sut.currentUserId = 1
+        let post = Post(userId: 1, id: 1, title: "some-title", body: "some-body")
+
+        sut.addFavouritePost(post)
+
+        XCTAssert(sut.favouritePosts.count == 1)
+        XCTAssertEqual(sut.favouritePosts.first, post)
+    }
+
+    func testAddFavouritePostDoesNotAddDuplicates() {
+        sut.currentUserId = 1
+        let post = Post(userId: 1, id: 1, title: "some-title", body: "some-body")
+
+        sut.addFavouritePost(post)
+        sut.addFavouritePost(post)
+
+        XCTAssert(sut.favouritePosts.count == 1)
+        XCTAssertEqual(sut.favouritePosts.first, post)
     }
 }
 

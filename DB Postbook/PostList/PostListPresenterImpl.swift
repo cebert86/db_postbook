@@ -1,14 +1,17 @@
 import UIKit
 
-class PostListPresenterImpl: NSObject, PostListPresenter, UITableViewDataSource {
+class PostListPresenterImpl: NSObject, PostListPresenter, UITableViewDataSource, CanAddFavouritePost {
 
     private let postFetcher: PostFetcher
+    private let userManager: UserManager
 
     private var posts: [Post] = []
     public weak var view: PostListViewController?
 
-    init(postFetcher: PostFetcher = PostFetcherImpl()) {
+    init(postFetcher: PostFetcher = PostFetcherImpl(),
+         userManager: UserManager = UserManagerImpl()) {
         self.postFetcher = postFetcher
+        self.userManager = userManager
     }
 
     func viewDidLoad() {
@@ -27,6 +30,11 @@ class PostListPresenterImpl: NSObject, PostListPresenter, UITableViewDataSource 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifer", for: indexPath) as! PostTableViewCell
         cell.setPost(posts[indexPath.row])
+        cell.canAddFavouritePost = self
         return cell
+    }
+
+    func addFavouritePost(_ post: Post) {
+        userManager.addFavouritePost(post)
     }
 }

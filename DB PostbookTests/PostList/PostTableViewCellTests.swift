@@ -3,9 +3,13 @@ import XCTest
 
 class PostTableViewCellTests: XCTestCase {
 
+    var canAddFavouritePost: CanAddFavouritePostMock!
+
     var sut: PostTableViewCell!
 
     override func setUp() {
+        canAddFavouritePost = CanAddFavouritePostMock()
+
         sut = PostTableViewCell(style: .default, reuseIdentifier: nil)
 
         sut.setPost(Post(userId: 1, id: 1, title: "some-title", body: "some-body"))
@@ -38,6 +42,30 @@ class PostTableViewCellTests: XCTestCase {
 
         XCTAssertNotNil(favButton)
         XCTAssertEqual(favButton?.titleColor(for: .normal), .blue)
+        XCTAssertNotNil(favButton?.target)
+    }
+
+    func testFavButtonAddsFavouritePost() {
+        let post = Post(userId: 1, id: 1, title: "some-title", body: "some-body")
+
+        sut.canAddFavouritePost = canAddFavouritePost
+        sut.setPost(post)
+
+        let favButton = sut.subviews.first { subView in
+            return (subView as? UIButton)?.title(for: .normal) == "FAV"
+            } as? UIButton
+
+        favButton?.sendActions(for: .touchUpInside)
+
+        XCTAssertEqual(canAddFavouritePost.favouritePostToAdd, post)
+    }
+
+    class CanAddFavouritePostMock: CanAddFavouritePost {
+        var favouritePostToAdd: Post?
+
+        func addFavouritePost(_ post: Post) {
+            favouritePostToAdd = post
+        }
     }
 }
 
