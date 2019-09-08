@@ -20,6 +20,7 @@ class CommentListViewController: UIViewController {
     }
 
     override func viewDidLoad() {
+        title = "Kommentare"
         view.backgroundColor = .white
 
         configureTableView()

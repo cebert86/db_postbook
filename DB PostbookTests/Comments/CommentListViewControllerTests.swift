@@ -19,6 +19,10 @@ class CommentListViewControllerTests: XCTestCase {
         XCTAssertNotNil(presenter.view)
     }
 
+    func testViewDidLoadSetsTitle() {
+        XCTAssertEqual(sut.title, "Kommentare")
+    }
+
     func testViewDidLoadSetsBackgroundColor() {
         XCTAssert(sut.view.backgroundColor == .white)
     }

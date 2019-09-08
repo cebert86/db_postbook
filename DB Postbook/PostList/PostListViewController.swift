@@ -21,6 +21,7 @@ class PostListViewController: UIViewController {
     }
 
     override func viewDidLoad() {
+        title = "Meine Posts"
         view.backgroundColor = .white
 
         configureSegmentedControl()

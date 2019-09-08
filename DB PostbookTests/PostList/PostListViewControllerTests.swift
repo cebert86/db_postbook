@@ -19,6 +19,10 @@ class PostListViewControllerTests: XCTestCase {
         XCTAssertNotNil(presenter.view)
     }
 
+    func testViewDidLoadSetsTitle() {
+        XCTAssertEqual(sut.title, "Meine Posts")
+    }
+
     func testViewDidLoadSetsBackgroundColor() {
         XCTAssert(sut.view.backgroundColor == .white)
     }
