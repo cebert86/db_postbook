@@ -6,7 +6,7 @@ class LoginViewController: UIViewController {
     private var presenter: LoginPresenter
 
     private let userIdTextField = UITextField()
-    private let loginButton = UIButton()
+    private let loginButton = UIButton(type: .roundedRect)
 
     init(presenter: LoginPresenter = LoginPresenterImpl()) {
         self.presenter = presenter
@@ -40,7 +40,6 @@ class LoginViewController: UIViewController {
 
     private func configureLoginButton() {
         loginButton.setTitle("Login", for: .normal)
-        loginButton.setTitleColor(.blue, for: .normal)
 
         view.addSubview(loginButton)
         loginButton.snp.makeConstraints { make in

@@ -41,7 +41,7 @@ class PostTableViewCellTests: XCTestCase {
         } as? UIButton
 
         XCTAssertNotNil(favButton)
-        XCTAssertEqual(favButton?.titleColor(for: .normal), .blue)
+        XCTAssert(favButton?.buttonType == .roundedRect)
         XCTAssertNotNil(favButton?.target)
     }
 

@@ -35,8 +35,8 @@ class LoginViewControllerTests: XCTestCase {
         let loginButton = firstSubviewOfClass(UIButton.self, in: sut.view) as? UIButton
 
         XCTAssertNotNil(loginButton)
-        XCTAssert(loginButton?.titleColor(for: .normal) == .blue)
         XCTAssertEqual(loginButton?.title(for: .normal), "Login")
+        XCTAssert(loginButton?.buttonType == .roundedRect)
     }
 
     func testLoginButtonTappedDelegatesToPresenterIfValidUserIdAvailable() {

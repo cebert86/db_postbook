@@ -4,7 +4,7 @@ class PostTableViewCell: UITableViewCell {
 
     private let titleLabel = UILabel()
     private let bodyLabel = UILabel()
-    private let favButton = UIButton()
+    private let favButton = UIButton(type: .roundedRect)
     private var post: Post?
 
     var canAddFavouritePost: CanAddFavouritePost?
@@ -54,7 +54,6 @@ class PostTableViewCell: UITableViewCell {
 
     private func configureFavButton() {
         favButton.setTitle("FAV", for: .normal)
-        favButton.setTitleColor(.blue, for: .normal)
         favButton.addTarget(self, action: #selector(favouriteButtonTapped), for: .touchUpInside)
 
         addSubview(favButton)
