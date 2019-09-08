@@ -34,13 +34,13 @@ class RestApiImpl: RestApi {
                                             error: Swift.Error?,
                                             onSuccess: @escaping ([T]) -> Void,
                                             onError: @escaping (Error) -> Void) {
-        guard let responseData = data, !responseData.isEmpty else {
-            DispatchQueue.main.async { onSuccess([]) }
+        guard error == nil else {
+            DispatchQueue.main.async { onError(error!) }
             return
         }
 
-        guard error == nil else {
-            DispatchQueue.main.async { onError(error!) }
+        guard let responseData = data, !responseData.isEmpty else {
+            DispatchQueue.main.async { onSuccess([]) }
             return
         }
 
