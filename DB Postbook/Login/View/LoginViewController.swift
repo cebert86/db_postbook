@@ -1,7 +1,7 @@
 import SnapKit
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
 
     private var presenter: LoginPresenter
 
@@ -29,8 +29,10 @@ class LoginViewController: UIViewController {
     }
 
     private func configureUserIdTextField() {
+        userIdTextField.returnKeyType = .done
         userIdTextField.borderStyle = .roundedRect
         userIdTextField.placeholder = "User ID"
+        userIdTextField.delegate = self
 
         view.addSubview(userIdTextField)
         userIdTextField.snp.makeConstraints { make in
@@ -48,6 +50,12 @@ class LoginViewController: UIViewController {
         }
 
         loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+    }
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        loginButtonTapped()
+        return true
     }
 
     @objc

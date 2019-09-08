@@ -27,8 +27,20 @@ class LoginViewControllerTests: XCTestCase {
         let userIdTextField = firstSubviewOfClass(UITextField.self, in: sut.view) as? UITextField
 
         XCTAssertNotNil(userIdTextField)
+        XCTAssertNotNil(userIdTextField?.delegate)
         XCTAssert(userIdTextField?.borderStyle == .roundedRect)
         XCTAssertEqual(userIdTextField?.placeholder, "User ID")
+        XCTAssert(userIdTextField?.returnKeyType == .done)
+    }
+
+    func testUserIdTextFieldTriggersLoginOnDone() {
+        let userIdTextField = firstSubviewOfClass(UITextField.self, in: sut.view) as? UITextField
+        userIdTextField?.text = "1"
+
+        let textFieldShouldReturn = sut.textFieldShouldReturn(UITextField())
+
+        XCTAssertTrue(textFieldShouldReturn)
+        XCTAssert(presenter.userId == 1)
     }
 
     func testContainsLoginButton() {
