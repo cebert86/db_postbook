@@ -3,7 +3,7 @@ import XCTest
 
 class PostListPresenterImplTests: XCTestCase {
 
-    var postFetcher: PostFetcherMock!
+    var restApi: RestApiMock!
     var userManager: UserManagerMock!
     var commentListWireframe: CommentListWireframeMock!
     var postListViewController: PostListViewControllerMock!
@@ -11,12 +11,12 @@ class PostListPresenterImplTests: XCTestCase {
     var sut: PostListPresenterImpl!
 
     override func setUp() {
-        postFetcher = PostFetcherMock()
+        restApi = RestApiMock()
         userManager = UserManagerMock()
         commentListWireframe = CommentListWireframeMock()
         postListViewController = PostListViewControllerMock()
 
-        sut = PostListPresenterImpl(postFetcher: postFetcher,
+        sut = PostListPresenterImpl(restApi: restApi,
                                     userManager: userManager,
                                     commentListWireframe: commentListWireframe)
     }
@@ -24,7 +24,7 @@ class PostListPresenterImplTests: XCTestCase {
     func testViewDidLoadFetchesPostsForUserId() {
         sut.viewDidLoad()
 
-        XCTAssertTrue(postFetcher.fetchCalled)
+        XCTAssertTrue(restApi.fetchCalled)
     }
 
     func testViewDidLoadReloadsTableView() {
@@ -90,7 +90,7 @@ class PostListPresenterImplTests: XCTestCase {
 
         sut.segmentedControlTapped(index: 0)
 
-        XCTAssertTrue(postFetcher.fetchCalled)
+        XCTAssertTrue(restApi.fetchCalled)
     }
 
     func testSegmentedControlSwitchToAllPostsHasCorrectItems() {
@@ -115,10 +115,10 @@ class PostListPresenterImplTests: XCTestCase {
         XCTAssertTrue(commentListWireframe.showCommentsCalled)
     }
 
-    class PostFetcherMock: PostFetcher {
+    class RestApiMock: RestApi {
         var fetchCalled = false
 
-        func fetch(onSuccess: @escaping ([Post]) -> Void, onError: @escaping (Error) -> Void) {
+        func fetchPosts(onSuccess: @escaping ([Post]) -> Void, onError: @escaping (Error) -> Void) {
             fetchCalled = true
             onSuccess([Post(userId: 1, id: 1, title: "some-title-1", body: "some-body-1"),
                        Post(userId: 1, id: 2, title: "some-title-2", body: "some-body-2")])

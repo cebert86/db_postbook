@@ -1,6 +1,6 @@
 import Foundation
 
-class PostFetcherImpl: PostFetcher {
+class RestApiImpl: RestApi {
 
     private let userManager: UserManager
 
@@ -8,7 +8,7 @@ class PostFetcherImpl: PostFetcher {
         self.userManager = userManager
     }
 
-    func fetch(onSuccess: @escaping ([Post]) -> Void, onError: @escaping (Error) -> Void) {
+    func fetchPosts(onSuccess: @escaping ([Post]) -> Void, onError: @escaping (Error) -> Void) {
         guard let url = URL(string: "https://jsonplaceholder.typicode.com/posts?userId=\(userManager.currentUserId)") else {
             onError(Failure.invalidUrl)
             return

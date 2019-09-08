@@ -2,17 +2,17 @@ import UIKit
 
 class PostListPresenterImpl: NSObject, PostListPresenter, UITableViewDataSource, UITableViewDelegate, CanAddFavouritePost {
 
-    private let postFetcher: PostFetcher
+    private let restApi: RestApi
     private let userManager: UserManager
     private let commentListWireframe: CommentListWireframe
 
     private var posts: [Post] = []
     public weak var view: PostListViewController?
 
-    init(postFetcher: PostFetcher = PostFetcherImpl(),
+    init(restApi: RestApi = RestApiImpl(),
          userManager: UserManager = UserManagerImpl(),
          commentListWireframe: CommentListWireframe = CommentListWireframeImpl()) {
-        self.postFetcher = postFetcher
+        self.restApi = restApi
         self.userManager = userManager
         self.commentListWireframe = commentListWireframe
     }
@@ -54,7 +54,7 @@ class PostListPresenterImpl: NSObject, PostListPresenter, UITableViewDataSource,
     }
 
     private func fetchPosts() {
-        postFetcher.fetch(onSuccess: { posts in
+        restApi.fetchPosts(onSuccess: { posts in
             self.posts = posts
             self.view?.reloadTableView()
         }, onError: { error in

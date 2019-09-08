@@ -12,9 +12,9 @@
 		B3124098232176A400192CCE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3124097232176A400192CCE /* Assets.xcassets */; };
 		B31240A6232176A400192CCE /* LoginViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31240A5232176A400192CCE /* LoginViewControllerTests.swift */; };
 		B33AF0182321888A00AF6879 /* LoginPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33AF0172321888A00AF6879 /* LoginPresenterImpl.swift */; };
-		B33AF01B232188AE00AF6879 /* PostFetcherImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33AF01A232188AE00AF6879 /* PostFetcherImpl.swift */; };
+		B33AF01B232188AE00AF6879 /* RestApiImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33AF01A232188AE00AF6879 /* RestApiImpl.swift */; };
 		B33AF01D23218B2600AF6879 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33AF01C23218B2600AF6879 /* LoginPresenter.swift */; };
-		B33AF02123218C7300AF6879 /* PostFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33AF02023218C7300AF6879 /* PostFetcher.swift */; };
+		B33AF02123218C7300AF6879 /* RestApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33AF02023218C7300AF6879 /* RestApi.swift */; };
 		B33AF02323218C9300AF6879 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33AF02223218C9300AF6879 /* Post.swift */; };
 		B33AF0282321909C00AF6879 /* PostListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33AF0272321909C00AF6879 /* PostListViewController.swift */; };
 		B33AF02C2321913300AF6879 /* PostListWireframeImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33AF02B2321913300AF6879 /* PostListWireframeImpl.swift */; };
@@ -70,9 +70,9 @@
 		B31240A5232176A400192CCE /* LoginViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTests.swift; sourceTree = "<group>"; };
 		B31240A7232176A400192CCE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B33AF0172321888A00AF6879 /* LoginPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenterImpl.swift; sourceTree = "<group>"; };
-		B33AF01A232188AE00AF6879 /* PostFetcherImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostFetcherImpl.swift; sourceTree = "<group>"; };
+		B33AF01A232188AE00AF6879 /* RestApiImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestApiImpl.swift; sourceTree = "<group>"; };
 		B33AF01C23218B2600AF6879 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
-		B33AF02023218C7300AF6879 /* PostFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostFetcher.swift; sourceTree = "<group>"; };
+		B33AF02023218C7300AF6879 /* RestApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestApi.swift; sourceTree = "<group>"; };
 		B33AF02223218C9300AF6879 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		B33AF0272321909C00AF6879 /* PostListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListViewController.swift; sourceTree = "<group>"; };
 		B33AF02B2321913300AF6879 /* PostListWireframeImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListWireframeImpl.swift; sourceTree = "<group>"; };
@@ -185,8 +185,8 @@
 		B33AF0192321889800AF6879 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				B33AF01A232188AE00AF6879 /* PostFetcherImpl.swift */,
-				B33AF02023218C7300AF6879 /* PostFetcher.swift */,
+				B33AF01A232188AE00AF6879 /* RestApiImpl.swift */,
+				B33AF02023218C7300AF6879 /* RestApi.swift */,
 				B33AF02223218C9300AF6879 /* Post.swift */,
 				B33AF0572325432C00AF6879 /* Comment.swift */,
 			);
@@ -472,7 +472,7 @@
 				B33AF0182321888A00AF6879 /* LoginPresenterImpl.swift in Sources */,
 				B33AF04923240EDD00AF6879 /* PostTableViewCell.swift in Sources */,
 				B33AF0452323FBCF00AF6879 /* UserManager.swift in Sources */,
-				B33AF02123218C7300AF6879 /* PostFetcher.swift in Sources */,
+				B33AF02123218C7300AF6879 /* RestApi.swift in Sources */,
 				B33AF056232542BF00AF6879 /* CommentTableViewCell.swift in Sources */,
 				B33AF054232541CE00AF6879 /* CommentListPresenterImpl.swift in Sources */,
 				B33AF04023239F0300AF6879 /* UserManagerImpl.swift in Sources */,
@@ -482,7 +482,7 @@
 				B33AF02C2321913300AF6879 /* PostListWireframeImpl.swift in Sources */,
 				B33AF0522325419A00AF6879 /* CommentListPresenter.swift in Sources */,
 				B3124091232176A300192CCE /* AppDelegate.swift in Sources */,
-				B33AF01B232188AE00AF6879 /* PostFetcherImpl.swift in Sources */,
+				B33AF01B232188AE00AF6879 /* RestApiImpl.swift in Sources */,
 				B33AF02323218C9300AF6879 /* Post.swift in Sources */,
 				B33AF0322321955D00AF6879 /* PostListPresenter.swift in Sources */,
 				B33AF02E2321916E00AF6879 /* PostListWireframe.swift in Sources */,

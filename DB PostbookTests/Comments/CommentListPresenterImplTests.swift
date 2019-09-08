@@ -3,25 +3,25 @@ import XCTest
 
 class CommentListPresenterImplTests: XCTestCase {
 
-    var postFetcher: PostFetcherMock!
+    var restApi: RestApiMock!
     var userManager: UserManagerMock!
     var commentListViewController: CommentListViewControllerMock!
 
     var sut: CommentListPresenterImpl!
 
     override func setUp() {
-        postFetcher = PostFetcherMock()
+        restApi = RestApiMock()
         userManager = UserManagerMock()
         let post = Post(userId: 1, id: 1, title: "some-title", body: "some-body")
         commentListViewController = CommentListViewControllerMock(presenter: CommentListPresenterImpl(post: post))
 
-        sut = CommentListPresenterImpl(post: post, postFetcher: postFetcher, userManager: userManager)
+        sut = CommentListPresenterImpl(post: post, restApi: restApi, userManager: userManager)
     }
 
     func testViewDidLoadFetchesCommentsForPostId() {
         sut.viewDidLoad()
 
-        XCTAssertTrue(postFetcher.commentsCalled)
+        XCTAssertTrue(restApi.commentsCalled)
     }
 
     func testViewDidLoadReloadsTableView() {
@@ -84,10 +84,10 @@ class CommentListPresenterImplTests: XCTestCase {
         XCTAssertEqual(userManager.favouritePostToAdd, post)
     }
 
-    class PostFetcherMock: PostFetcher {
+    class RestApiMock: RestApi {
         var commentsCalled = false
 
-        func fetch(onSuccess: @escaping ([Post]) -> Void, onError: @escaping (Error) -> Void) {
+        func fetchPosts(onSuccess: @escaping ([Post]) -> Void, onError: @escaping (Error) -> Void) {
 
         }
 

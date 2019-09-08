@@ -2,7 +2,7 @@ import UIKit
 
 class CommentListPresenterImpl: NSObject, CommentListPresenter, UITableViewDataSource, CanAddFavouritePost {
     private let post: Post
-    private let postFetcher: PostFetcher
+    private let restApi: RestApi
     private let userManager: UserManager
 
     private var comments: [Comment] = []
@@ -10,10 +10,10 @@ class CommentListPresenterImpl: NSObject, CommentListPresenter, UITableViewDataS
     public weak var view: CommentListViewController?
 
     init(post: Post,
-         postFetcher: PostFetcher = PostFetcherImpl(),
+         restApi: RestApi = RestApiImpl(),
          userManager: UserManager = UserManagerImpl()) {
         self.post = post
-        self.postFetcher = postFetcher
+        self.restApi = restApi
         self.userManager = userManager
     }
 
@@ -53,7 +53,7 @@ class CommentListPresenterImpl: NSObject, CommentListPresenter, UITableViewDataS
     }
 
     private func fetchComments() {
-        postFetcher.comments(for: post.id, onSuccess: { comments in
+        restApi.comments(for: post.id, onSuccess: { comments in
             self.comments = comments
             self.view?.reloadTableView()
         }, onError: { error in
