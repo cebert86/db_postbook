@@ -58,7 +58,7 @@ class PostListPresenterImpl: NSObject, PostListPresenter, UITableViewDataSource,
             self.posts = posts
             self.view?.reloadTableView()
         }, onError: { error in
-            //TODO: Present error
+            self.view?.presentSimpleErrorAlert()
         })
     }
 }

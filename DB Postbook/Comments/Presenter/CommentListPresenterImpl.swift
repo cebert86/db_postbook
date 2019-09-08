@@ -57,7 +57,7 @@ class CommentListPresenterImpl: NSObject, CommentListPresenter, UITableViewDataS
             self.comments = comments
             self.view?.reloadTableView()
         }, onError: { error in
-            //TODO: Present error
+            self.view?.presentSimpleErrorAlert()
         })
     }
 }

@@ -24,6 +24,17 @@ class CommentListPresenterImplTests: XCTestCase {
         XCTAssertTrue(restApi.commentsCalled)
     }
 
+    func testFetchCommentsErrorShowsSimpleErrorAlert() {
+        let restApiErrorMock = RestApiErrorMock()
+        let post = Post(userId: 1, id: 1, title: "some-title", body: "some-body")
+        sut = CommentListPresenterImpl(post: post, restApi: restApiErrorMock, userManager: userManager)
+        sut.view = commentListViewController
+
+        sut.viewDidLoad()
+
+        XCTAssertTrue(commentListViewController.presentSimpleErrorAlertCalled)
+    }
+
     func testViewDidLoadReloadsTableView() {
         sut.view = commentListViewController
 
@@ -98,11 +109,26 @@ class CommentListPresenterImplTests: XCTestCase {
         }
     }
 
+    class RestApiErrorMock: RestApi {
+        func fetchPosts(onSuccess: @escaping ([Post]) -> Void, onError: @escaping (Error) -> Void) {
+            onError(RestApiImpl.Failure.invalidUrl)
+        }
+
+        func comments(for postId: Int, onSuccess: @escaping ([Comment]) -> Void, onError: @escaping (Error) -> Void) {
+            onError(RestApiImpl.Failure.invalidUrl)
+        }
+    }
+
     class CommentListViewControllerMock: CommentListViewController {
         var reloadTableViewCalled = false
+        var presentSimpleErrorAlertCalled = false
 
         override func reloadTableView() {
             reloadTableViewCalled = true
+        }
+
+        override func presentSimpleErrorAlert() {
+            presentSimpleErrorAlertCalled = true
         }
     }
 

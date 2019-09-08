@@ -27,6 +27,15 @@ class PostListPresenterImplTests: XCTestCase {
         XCTAssertTrue(restApi.fetchCalled)
     }
 
+    func testFetchPostsErrorShowsSimpleErrorAlert() {
+        sut = PostListPresenterImpl(restApi: RestApiErrorMock(), userManager: userManager, commentListWireframe: commentListWireframe)
+        sut.view = postListViewController
+
+        sut.viewDidLoad()
+
+        XCTAssertTrue(postListViewController.presentSimpleErrorAlertCalled)
+    }
+
     func testViewDidLoadReloadsTableView() {
         sut.view = postListViewController
 
@@ -129,8 +138,19 @@ class PostListPresenterImplTests: XCTestCase {
         }
     }
 
+    class RestApiErrorMock: RestApi {
+        func fetchPosts(onSuccess: @escaping ([Post]) -> Void, onError: @escaping (Error) -> Void) {
+            onError(RestApiImpl.Failure.invalidUrl)
+        }
+
+        func comments(for postId: Int, onSuccess: @escaping ([Comment]) -> Void, onError: @escaping (Error) -> Void) {
+            onError(RestApiImpl.Failure.invalidUrl)
+        }
+    }
+
     class PostListViewControllerMock: PostListViewController {
         var reloadTableViewCalled = false
+        var presentSimpleErrorAlertCalled = false
 
         override func reloadTableView() {
             reloadTableViewCalled = true
@@ -138,6 +158,10 @@ class PostListPresenterImplTests: XCTestCase {
 
         override var navigationController: UINavigationController? {
             return UINavigationController()
+        }
+
+        override func presentSimpleErrorAlert() {
+            presentSimpleErrorAlertCalled = true
         }
     }
 

@@ -42,6 +42,7 @@
 		B33AF06123254BD500AF6879 /* CommentListPresenterImplTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33AF06023254BD500AF6879 /* CommentListPresenterImplTests.swift */; };
 		B33AF06323254F3E00AF6879 /* CommentListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33AF06223254F3E00AF6879 /* CommentListViewControllerTests.swift */; };
 		B33AF0652325502200AF6879 /* CommentTableViewCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33AF0642325502200AF6879 /* CommentTableViewCellTests.swift */; };
+		B33AF07223255B2200AF6879 /* UIViewController+SimpleAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33AF07123255B2200AF6879 /* UIViewController+SimpleAlert.swift */; };
 		C3BC63BBF389D3007C2D5C12 /* Pods_DB_PostbookTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1FBE48F741B73A7CE94FB71 /* Pods_DB_PostbookTests.framework */; };
 		FB86137F396F79585FDD11B0 /* Pods_DB_Postbook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFAFCECA6892314B80C30971 /* Pods_DB_Postbook.framework */; };
 /* End PBXBuildFile section */
@@ -100,6 +101,7 @@
 		B33AF06023254BD500AF6879 /* CommentListPresenterImplTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentListPresenterImplTests.swift; sourceTree = "<group>"; };
 		B33AF06223254F3E00AF6879 /* CommentListViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentListViewControllerTests.swift; sourceTree = "<group>"; };
 		B33AF0642325502200AF6879 /* CommentTableViewCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCellTests.swift; sourceTree = "<group>"; };
+		B33AF07123255B2200AF6879 /* UIViewController+SimpleAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+SimpleAlert.swift"; sourceTree = "<group>"; };
 		F1FBE48F741B73A7CE94FB71 /* Pods_DB_PostbookTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DB_PostbookTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFAFCECA6892314B80C30971 /* Pods_DB_Postbook.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DB_Postbook.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -147,6 +149,7 @@
 		B312408F232176A300192CCE /* DB Postbook */ = {
 			isa = PBXGroup;
 			children = (
+				B33AF07023255B0900AF6879 /* Extension */,
 				B33AF04E23253E4A00AF6879 /* Comments */,
 				B33AF03E23239EC700AF6879 /* Persistence */,
 				B33AF0262321908800AF6879 /* PostList */,
@@ -355,6 +358,14 @@
 			path = Presenter;
 			sourceTree = "<group>";
 		};
+		B33AF07023255B0900AF6879 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				B33AF07123255B2200AF6879 /* UIViewController+SimpleAlert.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		D85B9F8BBCC970E096365E63 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -556,6 +567,7 @@
 				B33AF056232542BF00AF6879 /* CommentTableViewCell.swift in Sources */,
 				B33AF054232541CE00AF6879 /* CommentListPresenterImpl.swift in Sources */,
 				B33AF04023239F0300AF6879 /* UserManagerImpl.swift in Sources */,
+				B33AF07223255B2200AF6879 /* UIViewController+SimpleAlert.swift in Sources */,
 				B33AF05A2325478400AF6879 /* CommentListWireframe.swift in Sources */,
 				B33AF0582325432C00AF6879 /* Comment.swift in Sources */,
 				B3124093232176A300192CCE /* LoginViewController.swift in Sources */,
