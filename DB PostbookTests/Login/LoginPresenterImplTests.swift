@@ -34,6 +34,22 @@ class LoginPresenterImplTests: XCTestCase {
         XCTAssert(userManager.currentUserId == 0)
     }
 
+    func testLoginButtonTappedDoesNotShowPostListIfUserIdIsLessThanZero() {
+        sut.view = viewController
+
+        sut.loginButtonTapped(userId: -1)
+
+        XCTAssertFalse(wireframe.showPostListCalled)
+    }
+
+    func testLoginButtonDoesNotSaveCurrentUserIdIfUserIdIsLessThanZero() {
+        sut.view = viewController
+
+        sut.loginButtonTapped(userId: -1)
+
+        XCTAssert(userManager.currentUserId == 0)
+    }
+
     func testLoginButtonTappedShowsPostListIfViewIsAvailable() {
         sut.view = viewController
 

@@ -12,7 +12,7 @@ class LoginPresenterImpl: LoginPresenter {
     }
 
     func loginButtonTapped(userId: Int) {
-        guard let view = view else {
+        guard let view = view, userId > 0 else {
             return
         }
 
