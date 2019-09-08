@@ -43,6 +43,7 @@
 		B33AF06323254F3E00AF6879 /* CommentListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33AF06223254F3E00AF6879 /* CommentListViewControllerTests.swift */; };
 		B33AF0652325502200AF6879 /* CommentTableViewCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33AF0642325502200AF6879 /* CommentTableViewCellTests.swift */; };
 		B33AF07223255B2200AF6879 /* UIViewController+SimpleAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33AF07123255B2200AF6879 /* UIViewController+SimpleAlert.swift */; };
+		B33AF07523255EBA00AF6879 /* UIViewControllerSimpleAlertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33AF07423255EBA00AF6879 /* UIViewControllerSimpleAlertTests.swift */; };
 		C3BC63BBF389D3007C2D5C12 /* Pods_DB_PostbookTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1FBE48F741B73A7CE94FB71 /* Pods_DB_PostbookTests.framework */; };
 		FB86137F396F79585FDD11B0 /* Pods_DB_Postbook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFAFCECA6892314B80C30971 /* Pods_DB_Postbook.framework */; };
 /* End PBXBuildFile section */
@@ -102,6 +103,7 @@
 		B33AF06223254F3E00AF6879 /* CommentListViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentListViewControllerTests.swift; sourceTree = "<group>"; };
 		B33AF0642325502200AF6879 /* CommentTableViewCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCellTests.swift; sourceTree = "<group>"; };
 		B33AF07123255B2200AF6879 /* UIViewController+SimpleAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+SimpleAlert.swift"; sourceTree = "<group>"; };
+		B33AF07423255EBA00AF6879 /* UIViewControllerSimpleAlertTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerSimpleAlertTests.swift; sourceTree = "<group>"; };
 		F1FBE48F741B73A7CE94FB71 /* Pods_DB_PostbookTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DB_PostbookTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFAFCECA6892314B80C30971 /* Pods_DB_Postbook.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DB_Postbook.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -165,6 +167,7 @@
 		B31240A4232176A400192CCE /* DB PostbookTests */ = {
 			isa = PBXGroup;
 			children = (
+				B33AF07323255EA100AF6879 /* Extension */,
 				B33AF05D23254AA100AF6879 /* Comments */,
 				B33AF0412323A03700AF6879 /* Persistence */,
 				B33AF03C23219F9500AF6879 /* Network */,
@@ -362,6 +365,14 @@
 			isa = PBXGroup;
 			children = (
 				B33AF07123255B2200AF6879 /* UIViewController+SimpleAlert.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		B33AF07323255EA100AF6879 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				B33AF07423255EBA00AF6879 /* UIViewControllerSimpleAlertTests.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -594,6 +605,7 @@
 				B33AF04B232415FA00AF6879 /* PostTableViewCellTests.swift in Sources */,
 				B33AF05F23254ABC00AF6879 /* CommentListWireframeImplTests.swift in Sources */,
 				B33AF03B23219D2100AF6879 /* PostListViewControllerTests.swift in Sources */,
+				B33AF07523255EBA00AF6879 /* UIViewControllerSimpleAlertTests.swift in Sources */,
 				B33AF06123254BD500AF6879 /* CommentListPresenterImplTests.swift in Sources */,
 				B33AF03723219A3F00AF6879 /* PostListWireframeImplTests.swift in Sources */,
 				B31240A6232176A400192CCE /* LoginViewControllerTests.swift in Sources */,
