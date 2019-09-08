@@ -175,9 +175,8 @@
 		B33AF0162321887100AF6879 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				B3124092232176A300192CCE /* LoginViewController.swift */,
-				B33AF0172321888A00AF6879 /* LoginPresenterImpl.swift */,
-				B33AF01C23218B2600AF6879 /* LoginPresenter.swift */,
+				B33AF06F232557C900AF6879 /* Presenter */,
+				B33AF06E232557C100AF6879 /* View */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -185,10 +184,8 @@
 		B33AF0192321889800AF6879 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				B33AF01A232188AE00AF6879 /* RestApiImpl.swift */,
-				B33AF02023218C7300AF6879 /* RestApi.swift */,
-				B33AF02223218C9300AF6879 /* Post.swift */,
-				B33AF0572325432C00AF6879 /* Comment.swift */,
+				B33AF06D232557B600AF6879 /* Model */,
+				B33AF06C232557AE00AF6879 /* RestApi */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -205,12 +202,9 @@
 		B33AF0262321908800AF6879 /* PostList */ = {
 			isa = PBXGroup;
 			children = (
-				B33AF0272321909C00AF6879 /* PostListViewController.swift */,
-				B33AF02B2321913300AF6879 /* PostListWireframeImpl.swift */,
-				B33AF02D2321916E00AF6879 /* PostListWireframe.swift */,
-				B33AF02F2321952700AF6879 /* PostListPresenterImpl.swift */,
-				B33AF0312321955D00AF6879 /* PostListPresenter.swift */,
-				B33AF04823240EDD00AF6879 /* PostTableViewCell.swift */,
+				B33AF06B2325578D00AF6879 /* Wireframe */,
+				B33AF06A2325578100AF6879 /* Presenter */,
+				B33AF0692325577700AF6879 /* View */,
 				B33AF04C23242C7100AF6879 /* CanAddFavouritePost.swift */,
 			);
 			path = PostList;
@@ -254,12 +248,9 @@
 		B33AF04E23253E4A00AF6879 /* Comments */ = {
 			isa = PBXGroup;
 			children = (
-				B33AF04F23253E8000AF6879 /* CommentListViewController.swift */,
-				B33AF0512325419A00AF6879 /* CommentListPresenter.swift */,
-				B33AF053232541CE00AF6879 /* CommentListPresenterImpl.swift */,
-				B33AF055232542BF00AF6879 /* CommentTableViewCell.swift */,
-				B33AF0592325478400AF6879 /* CommentListWireframe.swift */,
-				B33AF05B232547BD00AF6879 /* CommentListWireframeImpl.swift */,
+				B33AF0682325576A00AF6879 /* Presenter */,
+				B33AF0672325575900AF6879 /* View */,
+				B33AF0662325574B00AF6879 /* Wireframe */,
 			);
 			path = Comments;
 			sourceTree = "<group>";
@@ -273,6 +264,95 @@
 				B33AF0642325502200AF6879 /* CommentTableViewCellTests.swift */,
 			);
 			path = Comments;
+			sourceTree = "<group>";
+		};
+		B33AF0662325574B00AF6879 /* Wireframe */ = {
+			isa = PBXGroup;
+			children = (
+				B33AF0592325478400AF6879 /* CommentListWireframe.swift */,
+				B33AF05B232547BD00AF6879 /* CommentListWireframeImpl.swift */,
+			);
+			path = Wireframe;
+			sourceTree = "<group>";
+		};
+		B33AF0672325575900AF6879 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B33AF04F23253E8000AF6879 /* CommentListViewController.swift */,
+				B33AF055232542BF00AF6879 /* CommentTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B33AF0682325576A00AF6879 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				B33AF0512325419A00AF6879 /* CommentListPresenter.swift */,
+				B33AF053232541CE00AF6879 /* CommentListPresenterImpl.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		B33AF0692325577700AF6879 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B33AF0272321909C00AF6879 /* PostListViewController.swift */,
+				B33AF04823240EDD00AF6879 /* PostTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B33AF06A2325578100AF6879 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				B33AF02F2321952700AF6879 /* PostListPresenterImpl.swift */,
+				B33AF0312321955D00AF6879 /* PostListPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		B33AF06B2325578D00AF6879 /* Wireframe */ = {
+			isa = PBXGroup;
+			children = (
+				B33AF02B2321913300AF6879 /* PostListWireframeImpl.swift */,
+				B33AF02D2321916E00AF6879 /* PostListWireframe.swift */,
+			);
+			path = Wireframe;
+			sourceTree = "<group>";
+		};
+		B33AF06C232557AE00AF6879 /* RestApi */ = {
+			isa = PBXGroup;
+			children = (
+				B33AF01A232188AE00AF6879 /* RestApiImpl.swift */,
+				B33AF02023218C7300AF6879 /* RestApi.swift */,
+			);
+			path = RestApi;
+			sourceTree = "<group>";
+		};
+		B33AF06D232557B600AF6879 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B33AF02223218C9300AF6879 /* Post.swift */,
+				B33AF0572325432C00AF6879 /* Comment.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B33AF06E232557C100AF6879 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B3124092232176A300192CCE /* LoginViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B33AF06F232557C900AF6879 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				B33AF0172321888A00AF6879 /* LoginPresenterImpl.swift */,
+				B33AF01C23218B2600AF6879 /* LoginPresenter.swift */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 		D85B9F8BBCC970E096365E63 /* Frameworks */ = {
