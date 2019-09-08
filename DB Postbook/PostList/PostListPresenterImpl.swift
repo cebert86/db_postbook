@@ -1,17 +1,20 @@
 import UIKit
 
-class PostListPresenterImpl: NSObject, PostListPresenter, UITableViewDataSource, CanAddFavouritePost {
+class PostListPresenterImpl: NSObject, PostListPresenter, UITableViewDataSource, UITableViewDelegate, CanAddFavouritePost {
 
     private let postFetcher: PostFetcher
     private let userManager: UserManager
+    private let commentListWireframe: CommentListWireframe
 
     private var posts: [Post] = []
     public weak var view: PostListViewController?
 
     init(postFetcher: PostFetcher = PostFetcherImpl(),
-         userManager: UserManager = UserManagerImpl()) {
+         userManager: UserManager = UserManagerImpl(),
+         commentListWireframe: CommentListWireframe = CommentListWireframeImpl()) {
         self.postFetcher = postFetcher
         self.userManager = userManager
+        self.commentListWireframe = commentListWireframe
     }
 
     func viewDidLoad() {
@@ -27,6 +30,14 @@ class PostListPresenterImpl: NSObject, PostListPresenter, UITableViewDataSource,
         cell.setPost(posts[indexPath.row])
         cell.canAddFavouritePost = self
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let navigationController = view?.navigationController else {
+            return
+        }
+
+        commentListWireframe.showComments(on: navigationController, for: posts[indexPath.row])
     }
 
     func addFavouritePost(_ post: Post) {

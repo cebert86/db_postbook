@@ -57,6 +57,7 @@ class PostListViewController: UIViewController {
 
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: "reuseIdentifer")
         tableView.dataSource = presenter as? UITableViewDataSource
+        tableView.delegate = presenter as? UITableViewDelegate
     }
 
     @objc

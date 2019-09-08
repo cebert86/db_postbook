@@ -5,6 +5,7 @@ class PostListPresenterImplTests: XCTestCase {
 
     var postFetcher: PostFetcherMock!
     var userManager: UserManagerMock!
+    var commentListWireframe: CommentListWireframeMock!
     var postListViewController: PostListViewControllerMock!
 
     var sut: PostListPresenterImpl!
@@ -12,9 +13,12 @@ class PostListPresenterImplTests: XCTestCase {
     override func setUp() {
         postFetcher = PostFetcherMock()
         userManager = UserManagerMock()
+        commentListWireframe = CommentListWireframeMock()
         postListViewController = PostListViewControllerMock()
 
-        sut = PostListPresenterImpl(postFetcher: postFetcher, userManager: userManager)
+        sut = PostListPresenterImpl(postFetcher: postFetcher,
+                                    userManager: userManager,
+                                    commentListWireframe: commentListWireframe)
     }
 
     func testViewDidLoadFetchesPostsForUserId() {
@@ -99,6 +103,18 @@ class PostListPresenterImplTests: XCTestCase {
         XCTAssert(sut.tableView(UITableView(), numberOfRowsInSection: 0) == 2)
     }
 
+    func testPostSelectionShowsComments() {
+        sut.view = postListViewController
+        sut.viewDidLoad()
+
+        let tableView = UITableView()
+        tableView.register(PostTableViewCell.self, forCellReuseIdentifier: "reuseIdentifer")
+
+        sut.tableView(tableView, didSelectRowAt: IndexPath(row: 0, section: 0))
+
+        XCTAssertTrue(commentListWireframe.showCommentsCalled)
+    }
+
     class PostFetcherMock: PostFetcher {
         var fetchCalled = false
 
@@ -107,6 +123,10 @@ class PostListPresenterImplTests: XCTestCase {
             onSuccess([Post(userId: 1, id: 1, title: "some-title-1", body: "some-body-1"),
                        Post(userId: 1, id: 2, title: "some-title-2", body: "some-body-2")])
         }
+
+        func comments(for postId: Int, onSuccess: @escaping ([Comment]) -> Void, onError: @escaping (Error) -> Void) {
+
+        }
     }
 
     class PostListViewControllerMock: PostListViewController {
@@ -114,6 +134,10 @@ class PostListPresenterImplTests: XCTestCase {
 
         override func reloadTableView() {
             reloadTableViewCalled = true
+        }
+
+        override var navigationController: UINavigationController? {
+            return UINavigationController()
         }
     }
 
@@ -140,6 +164,14 @@ class PostListPresenterImplTests: XCTestCase {
 
         func addFavouritePost(_ post: Post) {
             favouritePostToAdd = post
+        }
+    }
+
+    class CommentListWireframeMock: CommentListWireframe {
+        var showCommentsCalled = false
+
+        func showComments(on navigationController: UINavigationController, for post: Post) {
+            showCommentsCalled = true
         }
     }
 }
